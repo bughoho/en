@@ -1,0 +1,240 @@
+<!DOCTYPE html><html lang="en-US" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>bughoho's blog</title><meta name="author" content="bughoho"><meta name="copyright" content="bughoho"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta property="og:type" content="website">
+<meta property="og:title" content="bughoho&#39;s blog">
+<meta property="og:url" content="https://en.sirtech.cc/index.html">
+<meta property="og:site_name" content="bughoho&#39;s blog">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://assets.sirtech.cc/img/202404051113084.png">
+<meta property="article:author" content="bughoho">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://assets.sirtech.cc/img/202404051113084.png"><link rel="shortcut icon" href="https://assets.sirtech.cc/img/202404051113084.png"><link rel="canonical" href="https://en.sirtech.cc/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//www.clarity.ms"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="baidu-site-verification" content="codeva-wbR3bPrNQ6"/><link rel="stylesheet" href="/css/index.css?v=5.0.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        if (name && globalFn[key][name]) return
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?3f2e1fdd5af8257f92ee9d6bef1b8dca";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+btf.addGlobalFn('pjaxComplete', () => {
+  _hmt.push(['_trackPageview',window.location.pathname])
+}, 'baidu_analytics')
+</script><script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-6T3EBPD0LQ"></script><script>window.dataLayer = window.dataLayer || []
+function gtag(){dataLayer.push(arguments)}
+gtag('js', new Date())
+gtag('config', 'G-6T3EBPD0LQ')
+btf.addGlobalFn('pjaxComplete', () => {
+  gtag('config', 'G-6T3EBPD0LQ', {'page_path': window.location.pathname})
+}, 'google_analytics')
+</script><script>(function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window, document, "clarity", "script", "oe3vigjws6");</script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"中"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":400,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'medium_zoom',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'bughoho\'s blog',
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2024-10-21 05:54:18'
+}</script><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="bughoho's blog" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://assets.sirtech.cc/img/202404051113084.png" onerror="onerror=null;src='/en/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">7</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">3</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-language"></i><span> Language</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/"><i class="fa-fw fas fa-e"></i><span> English</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://sirtech.cc/"><i class="fa-fw fas fa-c"></i><span> 中文</span></a></li></ul></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url(https://assets.sirtech.cc/img/202404052300061.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="https://assets.sirtech.cc/img/nav.webp" alt="Logo"><span class="site-name">bughoho's blog</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-language"></i><span> Language</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/"><i class="fa-fw fas fa-e"></i><span> English</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://sirtech.cc/"><i class="fa-fw fas fa-c"></i><span> 中文</span></a></li></ul></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="site-info"><h1 id="site-title">bughoho's blog</h1><div id="site-subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="https://github.com/bughoho" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:bughoho@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/10/17/setting-up-a-cloudflare-worker-to-freely-download-large-hugging-face-models/" title="Setting up a Cloudflare Worker to freely download large Hugging Face models">Setting up a Cloudflare Worker to freely download large Hugging Face models</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-10-17T23:44:25.000Z" title="Created 2024-10-17 23:44:25">2024-10-17</time></span></div><div class="content">Setting up a Cloudflare Worker to freely download large Hugging Face modelsPrefaceRecently, while working with ComfyUI, I encountered significant difficulties downloading models. I found existing online tools inadequate, and using a proxy quickly exhausted my bandwidth（this is a chinese’s problem:）. Tools like huggingface-cli and ht-transfer each had their own shortcomings. Ultimately, I devised a solution leveraging aria2’s multi-source download capability. By combining several open-source...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/10/15/backing-up-a-container-s-data-volume-with-one-command/" title="Backing Up a Container's Data Volume with One Command">Backing Up a Container's Data Volume with One Command</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-10-15T14:14:40.000Z" title="Created 2024-10-15 14:14:40">2024-10-15</time></span></div><div class="content">Backing Up a Container’s Data Volume with One CommandPreface  When I first created the miniflux container, I used the official docker-compose.yml configuration: 12345678910111213141516171819202122232425262728services:  miniflux:    image: miniflux/miniflux:latest    ports:      - &quot;80:8080&quot;    depends_on:      db:        condition: service_healthy    environment:      - DATABASE_URL=postgres://miniflux:secret@db/miniflux?sslmode=disable      - RUN_MIGRATIONS=1      - CREATE_ADMIN=1 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/06/06/redirect-usb-to-a-remote-host-using-usb-ip/" title="Redirect USB to a remote host using usb-ip">Redirect USB to a remote host using usb-ip</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-06-06T00:00:00.000Z" title="Created 2024-06-06 00:00:00">2024-06-06</time></span></div><div class="content">Redirect USB to a remote host using usb-ip</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/04/23/unlocking-hard-drive-limits-booting-windows-on-a-y-50-zte-ct321g2-mini-pc-with-ipxe-diskless-boot/" title="Unlocking Hard Drive Limits! Booting Windows on a ¥50 ZTE CT321G2 Mini PC with iPXE Diskless Boot">Unlocking Hard Drive Limits! Booting Windows on a ¥50 ZTE CT321G2 Mini PC with iPXE Diskless Boot</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-04-23T00:00:00.000Z" title="Created 2024-04-23 00:00:00">2024-04-23</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/hardware/">hardware</a></span></div><div class="content">I’ll begin by explaining why I decided to do this. I was using Apple TV to stream games to my computer at home and discovered that the Bluetooth-connected controller didn’t have vibration feedback, although it does when connected directly to the computer. After experiencing the controller vibration in Horizon, there was no going back. I needed a cheap solution. Enter this mini PC, found on Xianyu (a popular Chinese second-hand marketplace) for ¥50. It has an x86&#x2F;64 architecture, but...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/04/04/connecting-to-synology-dsm-using-vscode-remote-ssh/" title="Connecting to Synology DSM Using VSCode Remote SSH">Connecting to Synology DSM Using VSCode Remote SSH</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-04-04T00:00:00.000Z" title="Created 2024-04-04 00:00:00">2024-04-04</time></span></div><div class="content">Connecting to Synology DSM Using VSCode Remote SSH Quick StartWhen connecting to Synology directly via VSCode SSH, you may encounter the following error:  The remote host may not meet VS Code Server’s prerequisites for glibc and libstdc++  https://community.synology.com/enu/forum/10/post/153781 Resolution: 1. Connect to Synology via SSH Command Line1ssh yourname@192.168.1.x  1sudo vim /usr/bin/ldd  12#/bin/sh echo &quot;ldd 2.20&quot;  1chmod 755 /usr/bin/ldd  2. Enable Port...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2015/11/08/a-non-professional-comparison-of-various-open-source-assembly-and-disassembly-engines/" title="A Non-Professional Comparison of Various Open Source Assembly/Disassembly Engines">A Non-Professional Comparison of Various Open Source Assembly/Disassembly Engines</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2015-11-08T00:00:00.000Z" title="Created 2015-11-08 00:00:00">2015-11-08</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/disassembly/">disassembly</a></span></div><div class="content">A Non-Professional Comparison of Various Open Source Assembly&#x2F;Disassembly EnginesFor both personal interest and work, I have studied and used various popular open source x86&#x2F;64 assembly and disassembly engines. Analyzing and operating on assembly instructions requires either studying the Intel instruction set and writing an engine yourself, or using an existing open source engine. Because writing one from scratch is time-consuming, laborious, and error-prone, using an existing...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2015/11/04/yy-2015-reverse-analysis-1-underlying-communication-mechanism/" title="YY 2015 Reverse Analysis (1) Underlying Communication Mechanism">YY 2015 Reverse Analysis (1) Underlying Communication Mechanism</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2015-11-04T00:00:00.000Z" title="Created 2015-11-04 00:00:00">2015-11-04</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Revese-Engineering/">Revese Engineering</a></span></div><div class="content">YY 2015 Reverse Analysis (1) Underlying Communication Mechanism ForewordHaving previously studied the protocol of YY version 6.2, I recently revisited it and found that the current version, 8.3.0.0, has undergone significant changes. Key exchange no longer utilizes ZLIB compression, and all command words have been completely revised. However, the communication algorithm remains unchanged, utilizing RSA + RC4. Underlying Communication Process YY’s packet structure consists of a 4-byte length...</div></div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info is-center"><div class="avatar-img"><img src="https://assets.sirtech.cc/img/202404051113084.png" onerror="this.onerror=null;this.src='/en/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">bughoho</div><div class="author-info-description">To live a beautiful life, one must endure great patience—no explanations, no complaints. That makes a truly remarkable person.</div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">7</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/bughoho"><i class="https://assets.sirtech.cc/img/nav.webp"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/bughoho" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:bughoho@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content"></div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/10/17/setting-up-a-cloudflare-worker-to-freely-download-large-hugging-face-models/" title="Setting up a Cloudflare Worker to freely download large Hugging Face models">Setting up a Cloudflare Worker to freely download large Hugging Face models</a><time datetime="2024-10-17T23:44:25.000Z" title="Created 2024-10-17 23:44:25">2024-10-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/10/15/backing-up-a-container-s-data-volume-with-one-command/" title="Backing Up a Container's Data Volume with One Command">Backing Up a Container's Data Volume with One Command</a><time datetime="2024-10-15T14:14:40.000Z" title="Created 2024-10-15 14:14:40">2024-10-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/06/06/redirect-usb-to-a-remote-host-using-usb-ip/" title="Redirect USB to a remote host using usb-ip">Redirect USB to a remote host using usb-ip</a><time datetime="2024-06-06T00:00:00.000Z" title="Created 2024-06-06 00:00:00">2024-06-06</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/04/23/unlocking-hard-drive-limits-booting-windows-on-a-y-50-zte-ct321g2-mini-pc-with-ipxe-diskless-boot/" title="Unlocking Hard Drive Limits! Booting Windows on a ¥50 ZTE CT321G2 Mini PC with iPXE Diskless Boot">Unlocking Hard Drive Limits! Booting Windows on a ¥50 ZTE CT321G2 Mini PC with iPXE Diskless Boot</a><time datetime="2024-04-23T00:00:00.000Z" title="Created 2024-04-23 00:00:00">2024-04-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/04/04/connecting-to-synology-dsm-using-vscode-remote-ssh/" title="Connecting to Synology DSM Using VSCode Remote SSH">Connecting to Synology DSM Using VSCode Remote SSH</a><time datetime="2024-04-04T00:00:00.000Z" title="Created 2024-04-04 00:00:00">2024-04-04</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>Categories</span>
+            
+          </div>
+          <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Revese-Engineering/"><span class="card-category-list-name">Revese Engineering</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/disassembly/"><span class="card-category-list-name">disassembly</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/hardware/"><span class="card-category-list-name">hardware</span><span class="card-category-list-count">1</span></a></li>
+          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>Tags</span></div><div class="card-tag-cloud"><a href="/tags/Synology/" style="font-size: 1.5em; color: #99a9bf">Synology</a> <a href="/tags/Tutorial/" style="font-size: 1.1em; color: #999">Tutorial</a> <a href="/tags/nas/" style="font-size: 1.1em; color: #999">nas</a> <a href="/tags/yy/" style="font-size: 1.1em; color: #999">yy</a> <a href="/tags/windows/" style="font-size: 1.1em; color: #999">windows</a> <a href="/tags/IPXE/" style="font-size: 1.1em; color: #999">IPXE</a> <a href="/tags/ReveseEngineering/" style="font-size: 1.1em; color: #999">ReveseEngineering</a> <a href="/tags/cloudflare/" style="font-size: 1.1em; color: #999">cloudflare</a> <a href="/tags/network/" style="font-size: 1.1em; color: #999">network</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>Archives</span>
+      
+    </div>
+    <ul class="card-archive-list">
+  
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2024/10/">
+          <span class="card-archive-list-date">October 2024</span>
+          <span class="card-archive-list-count">2</span>
+        </a>
+      </li>
+    
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2024/06/">
+          <span class="card-archive-list-date">June 2024</span>
+          <span class="card-archive-list-count">1</span>
+        </a>
+      </li>
+    
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2024/04/">
+          <span class="card-archive-list-date">April 2024</span>
+          <span class="card-archive-list-count">2</span>
+        </a>
+      </li>
+    
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2015/11/">
+          <span class="card-archive-list-date">November 2015</span>
+          <span class="card-archive-list-count">2</span>
+        </a>
+      </li>
+    </ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Website Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article Count :</div><div class="item-count">7</div></div><div class="webinfo-item"><div class="item-name">Unique Visitors :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Page Views :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Last Update :</div><div class="item-count" id="last-push-date" data-lastPushDate="2024-10-21T05:54:18.365Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By bughoho</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="translateLink" type="button" title="Toggle Between Traditional and Simplified Chinese">EN</button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.0.0"></script><script src="/js/main.js?v=5.0.0"></script><script src="/js/tw_cn.js?v=5.0.0"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js"></script><div class="js-pjax"><script>window.typedJSFn = {
+  init: str => {
+    window.typed = new Typed('#subtitle', Object.assign({
+      strings: str,
+      startDelay: 300,
+      typeSpeed: 150,
+      loop: true,
+      backSpeed: 50,
+    }, null))
+  },
+  run: subtitleType => {
+    if (true) {
+      if (typeof Typed === 'function') {
+        subtitleType()
+      } else {
+        btf.getScript('https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.min.js').then(subtitleType)
+      }
+    } else {
+      subtitleType()
+    }
+  }
+}
+btf.addGlobalFn('pjaxSendOnce', () => { typed.destroy() }, 'typedDestroy')
+</script><script>function subtitleType () {
+  if (true) {
+    typedJSFn.init("To live a beautiful life, one must endure great patience—no explanations, no complaints. That makes a truly remarkable person.")
+  } else {
+    document.getElementById("subtitle").textContent = "T"
+  }
+}
+typedJSFn.run(subtitleType)</script></div><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.4/dist/canvas-fluttering-ribbon.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

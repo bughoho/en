@@ -1,0 +1,286 @@
+<!DOCTYPE html><html lang="en-US" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>A Non-Professional Comparison of Various Open Source Assembly/Disassembly Engines | bughoho's blog</title><meta name="author" content="bughoho"><meta name="copyright" content="bughoho"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="A Non-Professional Comparison of Various Open Source Assembly&#x2F;Disassembly EnginesFor both personal interest and work, I have studied and used various popular open source x86&#x2F;64 assembly and">
+<meta property="og:type" content="article">
+<meta property="og:title" content="A Non-Professional Comparison of Various Open Source Assembly&#x2F;Disassembly Engines">
+<meta property="og:url" content="https://en.sirtech.cc/2015/11/08/a-non-professional-comparison-of-various-open-source-assembly-and-disassembly-engines/index.html">
+<meta property="og:site_name" content="bughoho&#39;s blog">
+<meta property="og:description" content="A Non-Professional Comparison of Various Open Source Assembly&#x2F;Disassembly EnginesFor both personal interest and work, I have studied and used various popular open source x86&#x2F;64 assembly and">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://assets.sirtech.cc/img/202404051113084.png">
+<meta property="article:published_time" content="2015-11-08T00:00:00.000Z">
+<meta property="article:modified_time" content="2015-11-08T00:00:00.000Z">
+<meta property="article:author" content="bughoho">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://assets.sirtech.cc/img/202404051113084.png"><link rel="shortcut icon" href="https://assets.sirtech.cc/img/202404051113084.png"><link rel="canonical" href="https://en.sirtech.cc/2015/11/08/a-non-professional-comparison-of-various-open-source-assembly-and-disassembly-engines/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//www.clarity.ms"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="baidu-site-verification" content="codeva-wbR3bPrNQ6"/><link rel="stylesheet" href="/css/index.css?v=5.0.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        if (name && globalFn[key][name]) return
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?3f2e1fdd5af8257f92ee9d6bef1b8dca";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+btf.addGlobalFn('pjaxComplete', () => {
+  _hmt.push(['_trackPageview',window.location.pathname])
+}, 'baidu_analytics')
+</script><script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-6T3EBPD0LQ"></script><script>window.dataLayer = window.dataLayer || []
+function gtag(){dataLayer.push(arguments)}
+gtag('js', new Date())
+gtag('config', 'G-6T3EBPD0LQ')
+btf.addGlobalFn('pjaxComplete', () => {
+  gtag('config', 'G-6T3EBPD0LQ', {'page_path': window.location.pathname})
+}, 'google_analytics')
+</script><script>(function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window, document, "clarity", "script", "oe3vigjws6");</script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"中"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":400,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'medium_zoom',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'A Non-Professional Comparison of Various Open Source Assembly/Disassembly Engines',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2015-11-08 00:00:00'
+}</script><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="bughoho's blog" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://assets.sirtech.cc/img/202404051113084.png" onerror="onerror=null;src='/en/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">7</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">3</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-language"></i><span> Language</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/"><i class="fa-fw fas fa-e"></i><span> English</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://sirtech.cc/"><i class="fa-fw fas fa-c"></i><span> 中文</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="https://assets.sirtech.cc/img/nav.webp" alt="Logo"><span class="site-name">bughoho's blog</span></a><a class="nav-page-title" href="/"><span class="site-name">A Non-Professional Comparison of Various Open Source Assembly/Disassembly Engines</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-language"></i><span> Language</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/"><i class="fa-fw fas fa-e"></i><span> English</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://sirtech.cc/"><i class="fa-fw fas fa-c"></i><span> 中文</span></a></li></ul></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">A Non-Professional Comparison of Various Open Source Assembly/Disassembly Engines</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2015-11-08T00:00:00.000Z" title="Created 2015-11-08 00:00:00">2015-11-08</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2015-11-08T00:00:00.000Z" title="Updated 2015-11-08 00:00:00">2015-11-08</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/disassembly/">disassembly</a></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="A-Non-Professional-Comparison-of-Various-Open-Source-Assembly-Disassembly-Engines"><a href="#A-Non-Professional-Comparison-of-Various-Open-Source-Assembly-Disassembly-Engines" class="headerlink" title="A Non-Professional Comparison of Various Open Source Assembly&#x2F;Disassembly Engines"></a>A Non-Professional Comparison of Various Open Source Assembly&#x2F;Disassembly Engines</h2><p>For both personal interest and work, I have studied and used various popular open source x86&#x2F;64 assembly and disassembly engines. Analyzing and operating on assembly instructions requires either studying the Intel instruction set and writing an engine yourself, or using an existing open source engine. Because writing one from scratch is time-consuming, laborious, and error-prone, using an existing engine is preferable.</p>
+<p>Here is a comparison of some of the more popular disassembly engines that I have used:</p>
+<h2 id="1-Ollydbg’s-ODDisassm"><a href="#1-Ollydbg’s-ODDisassm" class="headerlink" title="1. Ollydbg’s ODDisassm"></a>1. Ollydbg’s ODDisassm</h2><p><a target="_blank" rel="noopener" href="http://www.ollydbg.de/">ODDisassm</a>, a component of Ollydbg, was the first open source disassembly engine I used. In 2007, due to the limited options available, I used this library to write a very simple virtual machine, as described in my article, <a target="_blank" rel="noopener" href="http://bbs.pediy.com/showthread.php?t=66210">“Encryption and Decryption (3)”</a>. At the time, the requirements for the disassembly library were not high, only that string text be used as an intermediate representation for encoding&#x2F;decoding.</p>
+<p>The advantage of this disassembly library is that it contains an assembly interface; that is, it can parse and encode text strings into binary. This feature alone was unique at the time. Few people in the open source community were doing this work. In recent years, the new debugger x64dbg has also developed an open source assembly library, XEDParse, which is similar in function to OD’s text parsing, supports a more complete instruction set, has fewer bugs, and also supports X64. Maintenance has been very strong.</p>
+<p>However, ODDisassm also has many shortcomings, such as:</p>
+<ol>
+<li>Incomplete instruction set support. Since Ollydbg has been out of maintenance for a long time, even the support for the MMX instruction set is incomplete. The multiple versions of the current INTEL&#x2F;AMD extended instruction set standards, SSE5&#x2F;AVX&#x2F;AES&#x2F;XOP, and others, cannot be parsed at all.</li>
+<li>The decoded structure is not detailed enough. For example, the instruction prefix support is not friendly enough. This can be seen from the disassembly window of Ollydbg. Except for instructions such as movs&#x2F;cmps, repcc and other instructions are separated when combined. For another example, the register cannot represent high 8-bit registers such as <code>ah\bh\ch\dh</code>.</li>
+<li>The author no longer maintains the open source version after the one-time open source, and it is difficult to fix bugs in disassembly in a timely manner.</li>
+</ol>
+<p>However, these are understandable because the author’s development goal at the time was to perform text assembly&#x2F;disassembly. No structure or interface was established for the decoded information. In general, using this disassembly engine today is antiquated.</p>
+<h2 id="2-BeaEngine"><a href="#2-BeaEngine" class="headerlink" title="2. BeaEngine"></a>2. BeaEngine</h2><p><a target="_blank" rel="noopener" href="https://github.com/BeaEngine/beaengine">BeaEngine</a> is the second library I used. At that time, the OD library could no longer meet my needs. When making a decompiler, I needed a library that could decode as much information as possible, so I found <code>BeaEngine</code>. I remember that the previous version of this library did not support high 8-bit register recognition, but the current version does. I haven’t found any obvious shortcomings while using it, and many new extended instruction sets that are not commonly used have also been implemented.</p>
+<p>The extended instruction sets currently implemented are:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FPU, MMX, SSE, SSE2, SSE3, SSSE3, SSE4.1, SSE4.2, VMX, CLMUL, AES, MPX</span><br></pre></td></tr></table></figure>
+
+<p>Simultaneously, it classifies different types of instructions, which is very convenient when judging different instructions. Another feature is that it can decode the registers used and affected by each instruction, including the flag register, and even the exact location of each bit in the flag register. This function is perfect for making optimizers and obfuscators.</p>
+<p>However, personally, I think the coding style of <code>BeaEngine</code> is really not good, with all kinds of forced type conversions and naming styles. It gives a messy feeling. For someone like me who has a cleanliness obsession with coding, it’s unbearable, so I switched to other libraries. If you don’t mind these, BeaEngine’s performance is still relatively good. However, be aware that BeaEngine has been known to exhibit occasional bugs.</p>
+<h2 id="3-udis86"><a href="#3-udis86" class="headerlink" title="3. udis86"></a>3. udis86</h2><p><a target="_blank" rel="noopener" href="https://github.com/vmt/udis86"><code>udis86</code></a> has emerged as my preferred disassembly engine. The udis86 codebase is notable for its clean and concise style. Functions and variables are named descriptively, making the code easy to read and understand. The interface is well-defined and flexible. Even maintaining a personal branch is straightforward, as understanding the overall architecture takes very little time.</p>
+<p>udis86 supports these X86 extended instruction sets:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MMX, FPU (x87), AMD 3DNow, SSE, SSE2, SSE3, SSSE3, SSE4.1, SSE4.2, AES, AMD-V, INTEL-VMX, SMX</span><br></pre></td></tr></table></figure>
+
+<p>The advantage of udis86 is that the interface is very flexible. You can choose to use <code>ud_decode</code> to decode an instruction and then use <code>ud_translate_intel</code> on the decoded structure to convert it into assembly code, or you can directly use <code>ud_disassemble</code> to complete the entire operation at once. All these interfaces can be used in one line.</p>
+<p>Due to the modular design concept of udis86, it can adapt to various scenarios. If you want to develop a disassembler like IDA, it can do it; if you want to develop an instruction simulator, analyzer, optimizer, or obfuscator, it can do it.</p>
+<p>This concept directly enables udis86 to have strong adaptability while taking into account performance. I have done performance tests, and udis86 is the engine with the fastest decoding speed in cases with similar decoding detail capabilities.</p>
+<p>As for shortcomings, I haven’t found any yet, but udis86 does not support BeaEngine’s register analysis, which is somewhat regrettable.</p>
+<h2 id="4-Capstone"><a href="#4-Capstone" class="headerlink" title="4. Capstone"></a>4. Capstone</h2><p><a target="_blank" rel="noopener" href="https://github.com/aquynh/capstone"><code>capstone</code></a> should be regarded as the culmination of all disassembly engines. I have to spend somewhat more time on it because I have a love-hate relationship with it. Capstone is ported from the MC component part of the <code>LLVM</code> framework, so the <code>CPU</code> architectures supported by <code>LLVM</code> are also supported by capstone.</p>
+<p>The CPU architectures it supports are: <code>Arm, Arm64 (Armv8), M68K, Mips, PowerPC, Sparc, SystemZ, XCore &amp; X86 (include X86_64)</code>.</p>
+<p>Capstone boasts the most comprehensive X86 instruction set support among these engines, including:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3dnow, 3dnowa, x86_64, adx, aes, atom, avx, avx2, avx512cd, avx512er, avx512f, avx512pf, bmi, bmi2, fma, fma4, fsgsbase, lzcnt, mmx, sha, slm, sse, sse2, sse3, sse4.1, sse4.2, sse4a, ssse3, tbm, xop.</span><br></pre></td></tr></table></figure>
+
+<p>This robust support makes it a top contender.</p>
+<p>In the context of the current popularity of mobile terminals, very few disassembly libraries support ARM. If you want to develop compilers under both X86 and ARM simultaneously, it would be better to use a unified interface. Additionally, the <code>next</code> branch of capstone (the <code>master</code> branch does not have this interface) also supports the cool stunt of analyzing the registers used and affected by instructions when decoding, like BeaEngine. With such a basic library, you can be somewhat lazy.</p>
+<p>From the perspective of the X86&#x2F;64 platform alone, whether in decoding ability or instruction set support, <code>Capstone</code> can be called a complete existence that surpasses <code>BeaEngine</code>.</p>
+<p>Having sung its praises, it’s time to talk about the shortcomings.</p>
+<p>Because <code>capstone</code> is ported from <code>LLVM</code>, <code>capstone</code> is a <code>C</code> language project, while <code>LLVM</code> is a <code>C++</code> project, so much adaptation work was done during the porting process, making it bloated.</p>
+<p>For example, <code>MCInst</code> in <code>LLVM</code> is a description class for single-instruction underlying mechanism instructions. Because <code>capstone</code> is a C project, these classes are turned into structures during transplantation, and member functions are turned into independent C functions, such as <code>MCInst_Init</code>, <code>MCInst_setOpcode</code>, etc. Because of the complexity and high compatibility of the <code>LLVM</code> framework, all the concepts in it have been highly abstracted, and Capstone has also made an adaptation interface to convert it to its own architecture, which causes too many intermediate layers during decoding, resulting in performance degradation. The order of important intermediate layer structures used in the decoding process of an instruction is as follows:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MCInst =&gt; InternalInstruction =&gt; cs_insn</span><br></pre></td></tr></table></figure>
+
+<p>The most basic decoding work relies on the LLVM architecture to decode to Capstone’s <code>InternalInstruction</code>, which is an internal structure containing all the details in the decoding process. After the decoding is completed, <code>update_pub_insn</code> is called to copy the content that needs to be publicly exposed to <code>cs_insn</code>. Other disassembly engines decode to the target structure at once.</p>
+<p>Capstone’s decoding process is so complicated that it naturally affects performance. I have done a less rigorous performance test, and Capstone’s performance consumption time is about five or six times that of udis86 (by the way, I gave Capstone a small Pull Request, <a target="_blank" rel="noopener" href="https://github.com/aquynh/capstone/pull/484">here</a> and <a target="_blank" rel="noopener" href="https://github.com/aquynh/capstone/pull/505">here</a>, the PR comes with a benchmark that, after testing, shows the performance is improved by nearly 20%). If tested in another way, udis86 only uses <code>ud_decode</code> to decode, and Capstone, which does not have an independent decoding interface, needs some hacking so that it does not generate assembly text. Then, the consumption time of Capstone is about twice that of udis86, which shows that the text operation of Capstone is much slower than udis86.</p>
+<p>Second, Capstone consumes much memory. When decoding an instruction, the instruction structure <code>cs_insn</code> passed in must be allocated by a dynamic allocation function, and it must be allocated twice, once for cs_insn and once for cs_detail. This will cause a huge amount of memory fragmentation. Additionally, the structure of each instruction is very large. I don’t remember how large, but <code>sizeof(cs_insn)</code>+<code>sizeof(cs_detail)</code> seems to be at least 2K or more. It is necessary to use dynamic memory. This is the difference between Capstone and other disassembly engines. If you want to use Capstone for much instruction analysis, you need to equip it with a fixed object memory allocator, which can slightly alleviate the memory fragmentation situation and improve performance somewhat.</p>
+<p>Perhaps for these reasons, the x64dbg community originally used BeaEngine as the supporting foundation. However, BeaEngine always exhibited many bugs, so it was later replaced by Capstone. However, they only use Capstone for the text disassembly of the GUI because although the decoding speed is not great, there are few bugs (after all, LLVM has a large company like Apple for support). The flow graph and instruction analysis (not yet perfected) still use BeaEngine, which is unavoidable; after all, performance is also very important.</p>
+<p>Another problem is that if you need a disassembly engine with strong decoding capabilities, I recommend comparing the decoding structures of each engine before choosing to see if it has any fields that you need.</p>
+<p>Capstone has a frustrating issue. Although its decoding ability is actually very strong, Capstone encapsulates the middle layer and only exposes the fields that it thinks need to be exposed. Its maintainer is somewhat stubborn (or perhaps, “rigorous”) and insists that less commonly used fields do not need to be exposed and that a simple interface is best.</p>
+<p>For example, the offset of the immediate Immediate in the instruction and the offset of the Displacement in the memory operand, originally in the internal structure <code>InternalInstruction</code>, are discarded when copied to the public structure <code>cs_insn</code>. There are also <code>REP</code> and <code>REPE</code> prefixes. Although they are represented by the same constant, they have different functions when combined with different instructions. For this, Capstone internally has a <code>valid_repe</code> function that can distinguish them, but it is not exposed to the public structure and is recognized as <code>REP</code>. Although these are very specialized, they are still very useful for instruction analysis and transformation.</p>
+<p>I personally think that the interface of Capstone is really frustrating to use, but its function is powerful. If you study the internal structure of its source code, you will find that many interfaces are not provided but are internally available. I maintain a <a target="_blank" rel="noopener" href="https://github.com/bughoho/capstone">branch</a> myself, using it with joy and pain.</p>
+<h2 id="Others"><a href="#Others" class="headerlink" title="Others"></a>Others</h2><p>Actually, there is also XDE, but I haven’t used it, so I won’t comment on it.</p>
+<p>Additionally, a length-disassembly engine in <a target="_blank" rel="noopener" href="https://github.com/DarthTon/Blackbone">blackbone</a> is worth mentioning. It is called <code>ldasm</code>. It’s not really an engine because it has only one function: to calculate the length of an instruction. This is very useful when relocating jump instructions during hooking. <a target="_blank" rel="noopener" href="https://github.com/DarthTon/Blackbone/blob/master/src/BlackBone/Asm/LDasm.c">Code Portal</a></p>
+<h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><p>Each of these disassembly engines has its strengths (except for OD), but each has some minor flaws. There is no such thing as perfection in this world. They are open source, so it’s great to use them. But you have to contribute yourself, right? Pick a good library, find bugs during use, submit an Issue to the community, or make a solution and then send a Pull Request. That is a way to pay for using it.</p>
+<table>
+<thead>
+<tr>
+<th align="center">Feature</th>
+<th align="left">Comparison</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Performance</td>
+<td align="left">udis86 &gt; BeaEngine &gt; capstone</td>
+</tr>
+<tr>
+<td align="center">Detail in Decoded Output</td>
+<td align="left">capstone &gt; BeaEngine &gt; udis86 (udis86 does not support register analysis; the remaining decoding capabilities are similar)</td>
+</tr>
+<tr>
+<td align="center">Platform support</td>
+<td align="left">capstone &gt; (udis86 &#x3D; BeaEngine)</td>
+</tr>
+<tr>
+<td align="center">X86 extended instruction set</td>
+<td align="left">capstone &gt; (udis86 ≈ BeaEngine)</td>
+</tr>
+</tbody></table>
+<p>If you need an X86&#x2F;64 disassembly engine with good performance and strong decoding ability but don’t need stunts like register analysis, then udis86 is right for you. If you also need register analysis functions, then BeaEngine and Capstone are right for you. If you also need ARM architecture support, then Capstone should suit you better.</p>
+<p>Ultimately, the best engine for a given task depends on the specific needs and priorities of the project.</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="https://en.sirtech.cc">bughoho</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="https://en.sirtech.cc/2015/11/08/a-non-professional-comparison-of-various-open-source-assembly-and-disassembly-engines/">https://en.sirtech.cc/2015/11/08/a-non-professional-comparison-of-various-open-source-assembly-and-disassembly-engines/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="https://assets.sirtech.cc/img/202404051113084.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.4/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.4/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="prev-post pull-left" href="/2024/04/04/connecting-to-synology-dsm-using-vscode-remote-ssh/" title="Connecting to Synology DSM Using VSCode Remote SSH"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Previous</div><div class="prev_info">Connecting to Synology DSM Using VSCode Remote SSH</div></div></a><a class="next-post pull-right" href="/2015/11/04/yy-2015-reverse-analysis-1-underlying-communication-mechanism/" title="YY 2015 Reverse Analysis (1) Underlying Communication Mechanism"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Next</div><div class="next_info">YY 2015 Reverse Analysis (1) Underlying Communication Mechanism</div></div></a></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comments</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info is-center"><div class="avatar-img"><img src="https://assets.sirtech.cc/img/202404051113084.png" onerror="this.onerror=null;this.src='/en/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">bughoho</div><div class="author-info-description">To live a beautiful life, one must endure great patience—no explanations, no complaints. That makes a truly remarkable person.</div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">7</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/bughoho"><i class="https://assets.sirtech.cc/img/nav.webp"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/bughoho" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:bughoho@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content"></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#A-Non-Professional-Comparison-of-Various-Open-Source-Assembly-Disassembly-Engines"><span class="toc-number">1.</span> <span class="toc-text">A Non-Professional Comparison of Various Open Source Assembly&#x2F;Disassembly Engines</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Ollydbg%E2%80%99s-ODDisassm"><span class="toc-number">2.</span> <span class="toc-text">1. Ollydbg’s ODDisassm</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-BeaEngine"><span class="toc-number">3.</span> <span class="toc-text">2. BeaEngine</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-udis86"><span class="toc-number">4.</span> <span class="toc-text">3. udis86</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Capstone"><span class="toc-number">5.</span> <span class="toc-text">4. Capstone</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Others"><span class="toc-number">6.</span> <span class="toc-text">Others</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Summary"><span class="toc-number">7.</span> <span class="toc-text">Summary</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/10/17/setting-up-a-cloudflare-worker-to-freely-download-large-hugging-face-models/" title="Setting up a Cloudflare Worker to freely download large Hugging Face models">Setting up a Cloudflare Worker to freely download large Hugging Face models</a><time datetime="2024-10-17T23:44:25.000Z" title="Created 2024-10-17 23:44:25">2024-10-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/10/15/backing-up-a-container-s-data-volume-with-one-command/" title="Backing Up a Container's Data Volume with One Command">Backing Up a Container's Data Volume with One Command</a><time datetime="2024-10-15T14:14:40.000Z" title="Created 2024-10-15 14:14:40">2024-10-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/06/06/redirect-usb-to-a-remote-host-using-usb-ip/" title="Redirect USB to a remote host using usb-ip">Redirect USB to a remote host using usb-ip</a><time datetime="2024-06-06T00:00:00.000Z" title="Created 2024-06-06 00:00:00">2024-06-06</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/04/23/unlocking-hard-drive-limits-booting-windows-on-a-y-50-zte-ct321g2-mini-pc-with-ipxe-diskless-boot/" title="Unlocking Hard Drive Limits! Booting Windows on a ¥50 ZTE CT321G2 Mini PC with iPXE Diskless Boot">Unlocking Hard Drive Limits! Booting Windows on a ¥50 ZTE CT321G2 Mini PC with iPXE Diskless Boot</a><time datetime="2024-04-23T00:00:00.000Z" title="Created 2024-04-23 00:00:00">2024-04-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/04/04/connecting-to-synology-dsm-using-vscode-remote-ssh/" title="Connecting to Synology DSM Using VSCode Remote SSH">Connecting to Synology DSM Using VSCode Remote SSH</a><time datetime="2024-04-04T00:00:00.000Z" title="Created 2024-04-04 00:00:00">2024-04-04</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By bughoho</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="Toggle Between Traditional and Simplified Chinese">EN</button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll to Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.0.0"></script><script src="/js/main.js?v=5.0.0"></script><script src="/js/tw_cn.js?v=5.0.0"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js"></script><div class="js-pjax"><script>(() => {
+  let initFn = window.walineFn || null
+
+  const initWaline = (Fn) => {
+    const waline = Fn(Object.assign({
+      el: '#waline-wrap',
+      serverURL: 'https://comment.sirtech.cc',
+      pageview: false,
+      dark: 'html[data-theme="dark"]',
+      path: window.location.pathname,
+      comment: false,
+    }, {"nick":"Nickname","nickError":"Nickname must be at least 3 characters","mail":"Email","mailError":"Please enter a valid email address","link":"Website","optional":"Optional","placeholder":"Welcome to comment","sofa":"Be the first to comment~","submit":"Submit","like":"Like","cancelLike":"Cancel like","reply":"Reply","cancelReply":"Cancel reply","comment":"Comment","refresh":"Refresh","more":"Load more...","preview":"Preview","emoji":"Emoji","uploadImage":"Upload image","seconds":"seconds ago","minutes":"minutes ago","hours":"hours ago","days":"days ago","now":"just now","uploading":"Uploading","login":"Login","logout":"Logout","admin":"Admin","sticky":"Sticky","word":"Word","wordHint":"The comment length should be between $0 and $1 characters!\\nCurrent count: $2","anonymous":"Anonymous","level0":"Lurker","level1":"Bubbler","level2":"Complainer","level3":"Active","level4":"Talkative","level5":"Legend","gif":"GIF","gifSearchPlaceholder":"Search GIFs","profile":"Profile","approved":"Approved","waiting":"Awaiting approval","spam":"Spam","unsticky":"Unstick","oldest":"Sort by oldest","latest":"Sort by latest","hottest":"Sort by hottest","reactionTitle":"What do you think about this post?"}))
+
+    const destroyWaline = () => {
+      waline.destroy()
+    }
+
+    btf.addGlobalFn('pjaxSendOnce', destroyWaline, 'destroyWaline')
+  }
+
+  const loadWaline = () => {
+    if (initFn) initWaline(initFn)
+    else {
+      btf.getCSS('https://cdn.jsdelivr.net/npm/@waline/client@3.3.2/dist/waline.min.css')
+        .then(() => import('https://cdn.jsdelivr.net/npm/@waline/client@3.3.2/dist/waline.min.js'))
+        .then(({ init }) => {
+          initFn = init || Waline.init
+          initWaline(initFn)
+          window.walineFn = initFn
+        })
+    }
+  }
+
+  if ('Waline' === 'Waline' || !false) {
+    if (false) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
+    else setTimeout(loadWaline, 0)
+  } else {
+    window.loadOtherComment = loadWaline
+  }
+})()</script></div><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.4/dist/canvas-fluttering-ribbon.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
